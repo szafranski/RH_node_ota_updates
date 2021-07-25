@@ -9,6 +9,7 @@ from modules import clear_the_screen, Bcolors, logo_top, triangle_image_show, ot
 from rpi_update import main_window as rpi_update, rh_update_check
 from nodes_flash import flashing_menu
 from nodes_update_old import nodes_update as old_flash_gpio
+from sensors_menu import sensors_menu as external_sensors_menu
 
 
 def compatibility():  # adds compatibility and fixes with previous versions
@@ -409,7 +410,9 @@ def features_menu(config):
 
                         5 - Update OTA software {endc}{bold}
 
-                        6 - Create a log file{yellow}
+                        6 - Add external sensors 
+
+                        7 - Create a log file{yellow}
 
                         e - Exit to main menu {endc}
 
@@ -431,7 +434,9 @@ def features_menu(config):
                 attribute_error_handling()
         elif selection == '5':
             self_updater(config)  # todo better "wrong user name" handling and added here too
-        elif selection == '6':  # maybe add a general checking if username is setup right?
+        elif selection == '6':
+            external_sensors_menu(config)
+        elif selection == '7':  # maybe add a general checking if username is setup right?
             log_to_dev(config)
         elif selection == 'e':
             break
